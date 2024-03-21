@@ -1,13 +1,14 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo.status === 'complete') {
+    // Check if the tab's URL is accessible and not a restricted URL like chrome://
+    if (changeInfo.status === 'complete' && tab.url && !tab.url.startsWith('chrome://')) {
         chrome.scripting.executeScript({
             target: {tabId: tabId},
-            function: setTitle
+            function: injectSetTitleScript
         });
     }
-});
+});;
 
-function setTitle() {
+function injectSetTitleScript() {
     const delay = 500; // Set delay as constant
 
     // Function to update the tab title
