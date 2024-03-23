@@ -29,7 +29,7 @@ function injectSetTitleScript() {
         } else {
             // Use the first part of the hostname as the prefix
             const domainParts = window.location.hostname.split('.');
-            const firstPart = domainParts[0];
+            const firstPart = domainParts[0] === 'www' ? domainParts[1] : domainParts[0];
             prefixToUse = firstPart;
         }
         updateTitle(prefixToUse);
