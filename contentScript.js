@@ -14,3 +14,16 @@ document.addEventListener('keydown', function(e) {
         setTitle();
     }
 });
+
+function setTitle() {
+    const savedPrefix = localStorage.getItem('customPrefix');
+    let prefix;
+    if (savedPrefix) {
+        prefix = savedPrefix;
+    } else {
+        // Use the first part of the hostname as the prefix
+        const domainParts = window.location.hostname.split('.');
+        prefix = domainParts[0] === 'www' ? domainParts[1] : domainParts[0];
+    }
+    updateTitle(prefix);
+}

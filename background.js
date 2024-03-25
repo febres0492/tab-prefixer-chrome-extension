@@ -23,16 +23,15 @@ function injectSetTitleScript() {
     // Function to determine and set the tab title
     function setTitle() {
         const savedPrefix = localStorage.getItem('customPrefix');
-        let prefixToUse;
+        let prefix;
         if (savedPrefix) {
-            prefixToUse = savedPrefix;
+            prefix = savedPrefix;
         } else {
             // Use the first part of the hostname as the prefix
             const domainParts = window.location.hostname.split('.');
-            const firstPart = domainParts[0] === 'www' ? domainParts[1] : domainParts[0];
-            prefixToUse = firstPart;
+            prefix = domainParts[0] === 'www' ? domainParts[1] : domainParts[0];
         }
-        updateTitle(prefixToUse);
+        updateTitle(prefix);
     }
 
     // Delay setting the title until 1 second after the page load completes
