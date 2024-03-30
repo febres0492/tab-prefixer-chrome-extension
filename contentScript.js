@@ -27,3 +27,11 @@ function setTitle() {
     }
     updateTitle(prefix);
 }
+
+function updateTitle(prefix) {
+    let originalTitle = document.title;
+    // Check if the prefix is already set to prevent duplicating it
+    if (!originalTitle.startsWith(prefix + ' / ')) {
+        document.title = prefix + ' / ' + originalTitle;
+    }
+}
