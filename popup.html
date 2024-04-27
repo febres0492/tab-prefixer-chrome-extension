@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Popup</title>
-    <script src="popup.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <title>Extension Popup</title>
 </head>
 <body>
-    <h1>Popup</h1>
+    <h2>Title Prefixer</h2>
+    <h3>Add Prefix</h3>
+    <input id="prefix-input" type="text" required>
+    <button id="btn-add">Add Prefix</button>
+    <button id="btn-delete">Delete Prefix</button>
+    <button id="btn-pause-on-current">Pause on current Tab</button>
+    <button id="btn-pause-on-all">Pause on All Tab</button>
+
+    <script src="background.js"></script>
+    <script src="popup.js"></script>
 </body>
 </html>

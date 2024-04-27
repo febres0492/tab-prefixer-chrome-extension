@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Custom Title Prefix",
+    "name": "Title Prefix CF",
     "description": "A Chrome extension to customize browser tab titles with a prefix.",
     "version": "1.0",
     "permissions": ["storage", "tabs", "scripting"],
@@ -8,24 +8,25 @@
         "<all_urls>"
     ],
     "background": {
-      "service_worker": "background.js"
+        "service_worker": "background.js"
     },
     "icons": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+        "16": "./images/title.png",
+        "48": "./images/title.png",
+        "128": "./images/icon128.png"
     },
     "action": {
-      "default_icon": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "./images/title.png",
+            "48": "./images/title.png",
+            "128": "./images/icon128.png"
       }
     },
     "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["contentScript.js"]
-      }
+        {
+            "matches": ["<all_urls>"],
+            "js": ["contentScript.js"]
+        }
     ]
 }

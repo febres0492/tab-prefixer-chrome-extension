@@ -15,6 +15,22 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// Listen for messages from the background script or popup
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.command === "updateTitle" && request.prefix) {
+        // Apply the prefix to the current page's title
+        document.title = `${request.prefix} / ${document.title}`;
+        sendResponse({status: "Title updated"});
+    }
+});
+
+// Function to send messages to the background script if needed
+function reportBackToBackground(info) {
+    chrome.runtime.sendMessage({command: "reportBack", data: info}, response => {
+        console.log("Response from background:", response);
+    });
+}
+
 function setTitle() {
     const savedPrefix = localStorage.getItem('customPrefix');
     let prefix;
